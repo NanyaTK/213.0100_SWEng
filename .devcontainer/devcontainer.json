@@ -1,0 +1,30 @@
+{
+  "name": "Blazor Dev Container",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": {
+      // You might adjust UID/GID if necessary, but 1000 is common on Linux/WSL
+      // "USER_UID": 1000,
+      // "USER_GID": 1000
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-dotnettools.csharp", // C# extension
+        "ms-azuretools.vscode-docker", // Docker extension
+        "eamodio.gitlens" // GitLens (optional but useful)
+        // Add other extensions you need
+      ]
+    }
+  },
+  // Forward ports for Blazor development (Kestrel defaults)
+  "forwardPorts": [
+    5000,
+    5001
+  ],
+  // Mount the current workspace folder into the container
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  // Run as the non-root user
+  "remoteUser": "vscode"
+}
